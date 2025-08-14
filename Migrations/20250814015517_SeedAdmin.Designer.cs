@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using minimal_api.infraestructure.DBContext;
 
@@ -10,9 +11,11 @@ using minimal_api.infraestructure.DBContext;
 namespace minimal_api.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20250814015517_SeedAdmin")]
+    partial class SeedAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,8 +55,8 @@ namespace minimal_api.Migrations
                         new
                         {
                             id = 1,
-                            Password = "12345",
-                            email = "adminteste@gmail.com",
+                            Password = "admin123",
+                            email = "",
                             role = "Administrator"
                         });
                 });

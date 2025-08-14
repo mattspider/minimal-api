@@ -1,20 +1,28 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using minimal_api.domain.services;
 using minimal_api.DTOs;
 using minimal_api.infraestructure.DBContext;
+using minimal_api.infraestructure.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+
 
 builder.Services.AddDbContext<DBContext>(options =>
 {
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection")));
 });
 
+builder.Services.AddScoped<IAdmin, AdminService>();
+builder.Services.AddScoped<DBContext>();
+
+var app = builder.Build();
+
 app.MapGet("/", () => "Hello World!");
 
-app.MapPost("Login", (LoginDto loginDto) =>
+app.MapPost("Login", ([FromBody] LoginDto loginDto, IAdmin adminInterface) =>
 {
-    if (loginDto.Username == "admin" && loginDto.Password == "12345")
+    if (adminInterface.Login(loginDto) != null)
     {
         return Results.Ok("Login successful");
     }
