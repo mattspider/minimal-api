@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using minimal_api.domain.entities;
 using minimal_api.DTOs;
-using minimal_api.infraestructure.DBContext;
+using minimal_api.infraestructure.Data;
 using minimal_api.infraestructure.Interfaces;
 
 namespace minimal_api.domain.services

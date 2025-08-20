@@ -3,22 +3,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace minimal_api.domain.entities
 {
-    public class Admin
+    public class Veiculo
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; } = default;
+        public int Id { get; set; } = default;
+
+        [Required
+        , StringLength(100)]
+        public string Nome { get; set; } = default;
+
+        [Required
+        , StringLength(100)]
+        public string Marca { get; set; } = default;
 
         [Required
         , StringLength(50)]
-        public string Role { get; set; } = default;
-
-        [Required
-        , StringLength(50)]
-        public string Password { get; set; } = default;
-
-        [Required
-        , StringLength(50)]
-        public string email { get; set; } = default;
+        public string Ano { get; set; } = default;
     }
 }

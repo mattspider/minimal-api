@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using minimal_api.domain.entities;
 
-namespace minimal_api.infraestructure.DBContext
+namespace minimal_api.infraestructure.Data
 {
     public class DBContext : DbContext
     {
@@ -11,6 +11,7 @@ namespace minimal_api.infraestructure.DBContext
             _configuration = configuration;
         }
         public DbSet<Admin> Admins { get; set; } = default!;
+        public DbSet<Veiculo> Veiculos { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,7 +21,7 @@ namespace minimal_api.infraestructure.DBContext
                     id = 1,
                     email = "adminteste@gmail.com",
                     Password = "12345",
-                    role = "Administrator"
+                    Role = "Administrator"
                 }
             );
         }
