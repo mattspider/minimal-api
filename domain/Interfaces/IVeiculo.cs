@@ -5,8 +5,7 @@ namespace minimal_api.domain.Interfaces
 {
     public interface IVeiculo
     {
-        List<Veiculo> ExibirVeiculos();
-        List<Veiculo> FiltrarVeiculos(int pageNumber, string? nome, string? marca, string? ano);
+        List<Veiculo> FiltrarVeiculos(int? pagina = 1, string? nome = null, string? marca = null, string? ano = null);
         Veiculo? ExibirVeiculoPorId(int id);
         void CriarVeiculo(Veiculo veiculo);
         void AtualizarVeiculo(Veiculo veiculo);

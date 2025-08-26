@@ -19,6 +19,6 @@ namespace minimal_api.domain.entities
 
         [Required
         , StringLength(50)]
-        public string Ano { get; set; } = default;
+        public int Ano { get; set; } = default;
     }
 }

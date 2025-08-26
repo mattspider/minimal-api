@@ -15,7 +15,7 @@ namespace minimal_api.infraestructure.services
             _context = context;
         }
 
-        public List<Veiculo> FiltrarVeiculos(int pageNumber, string nome, string marca, string ano)
+        public List<Veiculo> FiltrarVeiculos(int? pagina = 1, string? nome = null, string? marca = null, string? ano = null)
         {
             var query = _context.Veiculos.AsQueryable();
 
@@ -33,8 +33,12 @@ namespace minimal_api.infraestructure.services
                 _ => query.OrderBy(v => v.Nome) // fallback
             };
 
+            if (pagina == null || pagina <= 0)
+            {
+                pagina = 1;
+            }
             int pageSize = 10;
-            return query.Skip((pageNumber - 1) * pageSize)
+            return query.Skip(((int)pagina - 1) * pageSize)
                         .Take(pageSize)
                         .ToList();
         }
@@ -72,10 +76,6 @@ namespace minimal_api.infraestructure.services
             _context.SaveChanges();
         }
 
-        public List<Veiculo> ExibirVeiculos()
-        {
-            return _context.Veiculos.ToList();
-        }
     }
     
 }

@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace minimal_api.domain.ModelViews
 {
-    public class Home
+    public struct Home
     {
         public string Doc { get => "/swagger"; }
+
+        public string Mensagem { get => "Api de controle de veiculos"; }
     }
 }
